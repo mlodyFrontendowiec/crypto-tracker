@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import CurrencyList from "./components/CurrencyList/CurrencyList";
+import AppContext from "./context/AppContext";
+import request from "./helpers/request";
+import styled from "styled-components";
+import "./reset.css";
 
 function App() {
+  const [currencyList, setCurrencyList] = useState([]);
+
+  useEffect(() => {
+    request.get().then((res) => {
+      if (res.status === 200) {
+        setCurrencyList([...res.data]);
+      }
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={currencyList}>
+      <AppContainer>
+        <CurrencyList />
+      </AppContainer>
+    </AppContext.Provider>
   );
 }
+
+const AppContainer = styled.div`
+  background-color: #19181c;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+`;
 
 export default App;
