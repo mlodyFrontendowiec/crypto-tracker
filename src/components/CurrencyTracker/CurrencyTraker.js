@@ -60,7 +60,7 @@ const StyledList = styled.ul`
   transform: translateY(400px);
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   background-color: #19181c;
   height: auto;
 `;
@@ -68,6 +68,7 @@ const StyledList = styled.ul`
 const StyledNotFound = styled.h1`
   color: white;
   font-family: "Roboto", sans-serif;
+  text-align: center;
 `;
 
 export default CurrencyTracker;

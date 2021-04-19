@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import CurrencyTraker from "./components/CurrencyTracker/CurrencyTraker";
 
 import request from "./helpers/request";
 
 import "./reset.css";
+import DetailsView from "./views/DetailsView";
 
 function App() {
   const [currencyList, setCurrencyList] = useState([]);
@@ -20,7 +22,16 @@ function App() {
 
   return (
     <AppContainer>
-      <CurrencyTraker currencyList={currencyList} />
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <CurrencyTraker currencyList={currencyList} />
+          </Route>
+          <Route path="/cryptocurrency/:name" exact>
+            <DetailsView currencyList={currencyList} />
+          </Route>
+        </Switch>
+      </Router>
     </AppContainer>
   );
 }
