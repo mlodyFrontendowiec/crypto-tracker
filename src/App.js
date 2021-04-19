@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import CurrencyList from "./components/CurrencyList/CurrencyList";
-import SearchInput from "./components/SearchInput/SearchInput";
-import AppContext from "./context/AppContext";
+import CurrencyTraker from "./components/CurrencyTracker/CurrencyTraker";
 
 import request from "./helpers/request";
 
@@ -21,12 +19,9 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={currencyList}>
-      <AppContainer>
-        <SearchInput />
-        <CurrencyList />
-      </AppContainer>
-    </AppContext.Provider>
+    <AppContainer>
+      <CurrencyTraker currencyList={currencyList} />
+    </AppContainer>
   );
 }
 
@@ -34,7 +29,8 @@ const AppContainer = styled.div`
   background-color: #19181c;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  height: auto;
+  min-height: 100vh;
 `;
 
 export default App;
