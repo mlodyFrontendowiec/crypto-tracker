@@ -16,7 +16,7 @@ const ListItem = ({
       <StyledText>{name}</StyledText>
       <StyledText>{symbol.toUpperCase()}</StyledText>
       <StyledText>${current_price}</StyledText>
-      <StyledText>Marketcap {market_cap}</StyledText>
+      <StyledText>Marketcap ${market_cap}</StyledText>
       <StyledText>{price_change_percentage_24h.toFixed(2)}%</StyledText>
     </StyledListItem>
   );
@@ -27,6 +27,7 @@ const StyledListItem = styled.li`
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledImageItem = styled.img`

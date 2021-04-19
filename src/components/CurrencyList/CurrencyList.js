@@ -16,7 +16,8 @@ const CurrencyList = () => {
 };
 
 const StyledList = styled.ul`
-  width: 60%;
+  transform: translateY(400px);
+  width: 65%;
   margin: 0 auto;
 `;
 

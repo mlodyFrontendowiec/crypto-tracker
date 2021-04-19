@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import CurrencyList from "./components/CurrencyList/CurrencyList";
-import AppContext from "./context/AppContext";
-import request from "./helpers/request";
 import styled from "styled-components";
+
+import CurrencyList from "./components/CurrencyList/CurrencyList";
+import SearchInput from "./components/SearchInput/SearchInput";
+import AppContext from "./context/AppContext";
+
+import request from "./helpers/request";
+
 import "./reset.css";
 
 function App() {
@@ -19,6 +23,7 @@ function App() {
   return (
     <AppContext.Provider value={currencyList}>
       <AppContainer>
+        <SearchInput />
         <CurrencyList />
       </AppContainer>
     </AppContext.Provider>
