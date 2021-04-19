@@ -17,7 +17,9 @@ const ListItem = ({
       <StyledText>{symbol.toUpperCase()}</StyledText>
       <StyledText>${current_price}</StyledText>
       <StyledText>Marketcap ${market_cap}</StyledText>
-      <StyledText>{price_change_percentage_24h.toFixed(2)}%</StyledText>
+      <StyledTextPrice price={price_change_percentage_24h}>
+        {price_change_percentage_24h.toFixed(2)}%
+      </StyledTextPrice>
     </StyledListItem>
   );
 };
@@ -41,6 +43,14 @@ const StyledText = styled.p`
   font-size: 20px;
   text-align: left;
   width: 15%;
+`;
+const StyledTextPrice = styled.p`
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  text-align: left;
+  width: 15%;
+  color: ${({ price }) => (price > 0 ? "green" : "red")};
 `;
 
 export default ListItem;
