@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -10,19 +10,31 @@ const ListItem = ({
   current_price,
   market_cap,
   price_change_percentage_24h,
+  addToPortfolio = true,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleAddToPortfolio = (e) => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <StyledListItem>
-      <StyledImageItem src={image} alt={name} />
-      <StyledText>{name}</StyledText>
-      <StyledText>{symbol.toUpperCase()}</StyledText>
-      <StyledText>${current_price}</StyledText>
-      <StyledText>Marketcap ${market_cap}</StyledText>
-      <StyledTextPrice price={price_change_percentage_24h}>
-        {price_change_percentage_24h.toFixed(2)}%
-      </StyledTextPrice>
-      <StyledLink to={`/cryptocurrency/${id}`}>About</StyledLink>
-    </StyledListItem>
+    <>
+      <StyledListItem>
+        <StyledImageItem src={image} alt={name} />
+        <StyledText>{name}</StyledText>
+        <StyledText>{symbol.toUpperCase()}</StyledText>
+        <StyledText>${current_price}</StyledText>
+        <StyledTextPrice price={price_change_percentage_24h}>
+          {price_change_percentage_24h.toFixed(2)}%
+        </StyledTextPrice>
+        <StyledButton onClick={handleAddToPortfolio} data-name={id}>
+          Add to portfolio
+        </StyledButton>
+        <StyledLink to={`/cryptocurrency/${id}`}>About</StyledLink>
+      </StyledListItem>
+      {isOpen && <StyledDropdown></StyledDropdown>}
+    </>
   );
 };
 
@@ -128,6 +140,28 @@ const StyledLink = styled(Link)`
   @media (max-width: 350px) {
     font-size: 6px;
   }
+`;
+
+const StyledButton = styled.button`
+  font-family: "Roboto", sans-serif;
+  background-color: none;
+  border: 2px solid #7811f7;
+  background-color: #7811f7;
+  color: white;
+  cursor: pointer;
+  outline: none;
+`;
+
+const StyledDropdown = styled.div`
+  @keyframes growing {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 40px;
+    }
+  }
+  animation: growing 0.5s forwards;
 `;
 
 export default React.memo(ListItem);
