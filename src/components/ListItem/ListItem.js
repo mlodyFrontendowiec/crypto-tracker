@@ -35,11 +35,37 @@ const StyledListItem = styled.li`
   background-color: #7811f7;
   margin: 20px;
   border-radius: 10px;
+  @media (max-width: 1920px) {
+    width: 70%;
+  }
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+    margin: 10px;
+  }
+  @media (max-width: 450px) {
+    font-size: 8px;
+    margin: 8px;
+  }
 `;
 
 const StyledImageItem = styled.img`
   width: 40px;
   height: 40px;
+  @media (max-width: 1000px) {
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 600px) {
+    width: 20px;
+    height: 20px;
+  }
+  @media (max-width: 450px) {
+    width: 15px;
+    height: 15px;
+  }
 `;
 
 const StyledText = styled.p`
@@ -48,6 +74,18 @@ const StyledText = styled.p`
   font-size: 20px;
   text-align: left;
   width: 15%;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media (max-width: 400px) {
+    font-size: 8px;
+  }
 `;
 const StyledTextPrice = styled.p`
   color: white;
@@ -55,13 +93,41 @@ const StyledTextPrice = styled.p`
   font-size: 20px;
   text-align: left;
   width: 15%;
+  text-align: center;
   color: ${({ price }) => (price > 0 ? "#00ff00" : "red")};
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media (max-width: 390px) {
+    font-size: 6px;
+  }
 `;
 
 const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media (max-width: 450px) {
+    font-size: 8px;
+  }
+  @media (max-width: 350px) {
+    font-size: 6px;
+  }
 `;
 
-export default ListItem;
+export default React.memo(ListItem);

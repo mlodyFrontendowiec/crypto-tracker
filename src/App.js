@@ -20,6 +20,10 @@ function App() {
     });
   }, []);
 
+  const setData = () => {
+    localStorage.setItem("cryptocurrency", currencyList);
+  };
+
   return (
     <AppContainer>
       <Router>
@@ -28,7 +32,10 @@ function App() {
             <CurrencyTraker currencyList={currencyList} />
           </Route>
           <Route path="/cryptocurrency/:name" exact>
-            <DetailsView currencyList={currencyList} />
+            <DetailsView
+              currencyList={currencyList}
+              setCurrencyList={setCurrencyList}
+            />
           </Route>
         </Switch>
       </Router>

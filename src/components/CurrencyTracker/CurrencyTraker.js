@@ -40,9 +40,9 @@ const StyledHeader = styled.h1`
   font-family: "Roboto", sans-serif;
   color: white;
   position: absolute;
-  left: 50%;
   top: 18%;
-  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
 `;
 
 const StyledInput = styled.input`
@@ -63,6 +63,9 @@ const StyledList = styled.ul`
   padding-bottom: 20px;
   background-color: #19181c;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const StyledNotFound = styled.h1`
