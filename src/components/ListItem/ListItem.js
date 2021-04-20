@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Form from "../Form/Form";
 
 const ListItem = ({
   id,
@@ -10,7 +11,6 @@ const ListItem = ({
   current_price,
   market_cap,
   price_change_percentage_24h,
-  addToPortfolio = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,12 +28,16 @@ const ListItem = ({
         <StyledTextPrice price={price_change_percentage_24h}>
           {price_change_percentage_24h.toFixed(2)}%
         </StyledTextPrice>
-        <StyledButton onClick={handleAddToPortfolio} data-name={id}>
+        <StyledButton onClick={handleAddToPortfolio}>
           Add to portfolio
         </StyledButton>
         <StyledLink to={`/cryptocurrency/${id}`}>About</StyledLink>
       </StyledListItem>
-      {isOpen && <StyledDropdown></StyledDropdown>}
+      {isOpen && (
+        <StyledDropdown isOpen={isOpen}>
+          <Form currentPrice={current_price} />
+        </StyledDropdown>
+      )}
     </>
   );
 };
@@ -150,18 +154,51 @@ const StyledButton = styled.button`
   color: white;
   cursor: pointer;
   outline: none;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media (max-width: 450px) {
+    font-size: 8px;
+  }
 `;
 
 const StyledDropdown = styled.div`
+  background-color: #7811f7;
+
+  position: relative;
+  top: -50px;
+  z-index: -1;
+  border-radius: 20px;
   @keyframes growing {
     0% {
       height: 0;
     }
     100% {
-      height: 40px;
+      height: 200px;
     }
   }
-  animation: growing 0.5s forwards;
+  @keyframes shrink {
+    0% {
+      height: 200px;
+    }
+    100% {
+      height: 0;
+    }
+  }
+  animation: ${({ isOpen = false }) =>
+    isOpen === false ? "shrink 0.2s forwards" : "growing 0.5s forwards"};
+  @media (max-width: 1920px) {
+    width: 70%;
+  }
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
 `;
 
-export default React.memo(ListItem);
+export default ListItem;
