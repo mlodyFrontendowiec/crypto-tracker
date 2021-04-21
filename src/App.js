@@ -3,15 +3,18 @@ import styled from "styled-components";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 import CurrencyTraker from "./components/CurrencyTracker/CurrencyTraker";
+import AppContext from "./context/AppContext";
 
 import request from "./helpers/request";
 
 import "./reset.css";
 import DetailsView from "./views/DetailsView";
 import Portfolio from "./components/Portfolio/Portfolio";
+import PriceTag from "./components/PriceTag/PriceTag";
 
 function App() {
   const [currencyList, setCurrencyList] = useState([]);
+  const [myCurrency, setMyCurrency] = useState([]);
 
   useEffect(() => {
     request.get().then((res) => {
@@ -21,27 +24,34 @@ function App() {
     });
   }, []);
 
+  const addToPortfolio = (obj) => {
+    setMyCurrency([...myCurrency, obj]);
+  };
+
   return (
-    <AppContainer>
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <StyledLink to="/portfolio">Portfolio</StyledLink>
-            <CurrencyTraker currencyList={currencyList} />
-          </Route>
-          <Route path="/cryptocurrency/:name" exact>
-            <StyledLink to="/portfolio">Portfolio</StyledLink>
-            <DetailsView
-              currencyList={currencyList}
-              setCurrencyList={setCurrencyList}
-            />
-          </Route>
-          <Route to="/portfolio">
-            <Portfolio />{" "}
-          </Route>
-        </Switch>
-      </Router>
-    </AppContainer>
+    <AppContext.Provider value={{ myCurrency, addToPortfolio }}>
+      <AppContainer>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <StyledLink to="/portfolio">Portfolio</StyledLink>
+              <CurrencyTraker currencyList={currencyList} />
+              <PriceTag />
+            </Route>
+            <Route path="/cryptocurrency/:name" exact>
+              <StyledLink to="/portfolio">Portfolio</StyledLink>
+              <DetailsView
+                currencyList={currencyList}
+                setCurrencyList={setCurrencyList}
+              />
+            </Route>
+            <Route to="/portfolio">
+              <Portfolio />
+            </Route>
+          </Switch>
+        </Router>
+      </AppContainer>
+    </AppContext.Provider>
   );
 }
 
