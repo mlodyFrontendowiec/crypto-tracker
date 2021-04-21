@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import AppContext from "../../context/AppContext";
 
 const Form = ({ currency, currentPrice }) => {
   const [quantity, setQuantity] = useState(0);
+  const { addToPortfolio } = useContext(AppContext);
 
   const handleInputChange = (e) => {
     setQuantity(e.target.value);
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    addToPortfolio({
+      name: currency,
+      currentPrice: quantity * currentPrice,
+    });
+  };
+
   return (
     <StyledFormContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleFormSubmit}>
         <StyledLabel>
           Quantity:
           <StyledInput
@@ -20,7 +30,6 @@ const Form = ({ currency, currentPrice }) => {
           />
         </StyledLabel>
         <br />
-        <input type="hidden" value={currency} />
         <StyledFormButton>Add cryptocurrency</StyledFormButton>
       </StyledForm>
       <StyledParagraph>
