@@ -14,7 +14,7 @@ const ListItem = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleAddToPortfolio = (e) => {
+  const handleDropDown = (e) => {
     setIsOpen((prev) => !prev);
   };
 
@@ -28,14 +28,12 @@ const ListItem = ({
         <StyledTextPrice price={price_change_percentage_24h}>
           {price_change_percentage_24h.toFixed(2)}%
         </StyledTextPrice>
-        <StyledButton onClick={handleAddToPortfolio}>
-          Add to portfolio
-        </StyledButton>
+        <StyledButton onClick={handleDropDown}>Add to portfolio</StyledButton>
         <StyledLink to={`/cryptocurrency/${id}`}>About</StyledLink>
       </StyledListItem>
       {isOpen && (
         <StyledDropdown isOpen={isOpen}>
-          <Form currentPrice={current_price} />
+          <Form currentPrice={current_price} currency={name} />
         </StyledDropdown>
       )}
     </>
