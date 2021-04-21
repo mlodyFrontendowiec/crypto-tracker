@@ -14,8 +14,10 @@ const Form = ({ currency, currentPrice }) => {
     e.preventDefault();
     addToPortfolio({
       name: currency,
+      quantity: quantity,
       currentPrice: quantity * currentPrice,
     });
+    setQuantity(0);
   };
 
   return (

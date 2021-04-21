@@ -3,19 +3,23 @@ import styled from "styled-components";
 import AppContext from "../../context/AppContext";
 
 const PriceTag = () => {
-  const { myCurrency } = useContext(AppContext);
+  const { myCurrency, currencyList } = useContext(AppContext);
   const [value, setValue] = useState(0);
   let totalValue = 0;
 
   useEffect(() => {
     if (myCurrency.length !== 0) {
       myCurrency.forEach((element) => {
-        totalValue += element.currentPrice;
+        const actualPriceItem = currencyList.find(
+          (item) => item.name === element.name
+        );
+        console.log(element.quantity);
+        totalValue += element.quantity * actualPriceItem.current_price;
       });
       console.log(totalValue);
       setValue(totalValue);
     }
-  }, [myCurrency]);
+  }, [currencyList]);
 
   return (
     <StylePriceTagContainer>

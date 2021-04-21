@@ -17,19 +17,23 @@ function App() {
   const [myCurrency, setMyCurrency] = useState([]);
 
   useEffect(() => {
-    request.get().then((res) => {
-      if (res.status === 200) {
-        setCurrencyList([...res.data]);
-      }
-    });
-  }, []);
+    const interval = setInterval(() => {
+      request.get().then((res) => {
+        if (res.status === 200) {
+          setCurrencyList([...res.data]);
+        }
+      });
+      console.log("ok");
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [currencyList]);
 
   const addToPortfolio = (obj) => {
     setMyCurrency([...myCurrency, obj]);
   };
 
   return (
-    <AppContext.Provider value={{ myCurrency, addToPortfolio }}>
+    <AppContext.Provider value={{ myCurrency, currencyList, addToPortfolio }}>
       <AppContainer>
         <Router>
           <Switch>
