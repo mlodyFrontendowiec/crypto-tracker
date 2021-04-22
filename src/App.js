@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import CurrencyTraker from "./components/CurrencyTracker/CurrencyTraker";
 import AppContext from "./context/AppContext";
@@ -8,10 +8,11 @@ import AppContext from "./context/AppContext";
 import request from "./helpers/request";
 
 import "./reset.css";
-import DetailsView from "./views/DetailsView";
-import Portfolio from "./components/Portfolio/Portfolio";
+import DetailsView from "./views/DetailsView/DetailsView";
+import Portfolio from "./views/Portfolio/Portfolio";
 import PriceTag from "./components/PriceTag/PriceTag";
 import Chart from "./components/Chart/Chart";
+import { AppContainer, StyledLink } from "./components/StyledApp/StyledApp";
 
 function App() {
   const [currencyList, setCurrencyList] = useState([]);
@@ -59,26 +60,5 @@ function App() {
     </AppContext.Provider>
   );
 }
-
-const AppContainer = styled.div`
-  background-color: #19181c;
-  margin: 0;
-  padding: 0;
-  height: auto;
-  min-height: 100vh;
-`;
-
-const StyledLink = styled(Link)`
-  position: absolute;
-  text-decoration: none;
-  top: 20px;
-  right: 20px;
-  font-family: "Roboto", sans-serif;
-  color: white;
-  font-size: 20px;
-  :hover {
-    color: #7811f7;
-  }
-`;
 
 export default App;

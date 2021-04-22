@@ -1,21 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Portfolio = () => {
-  return (
-    <StyledView>
-      <StyledLink to="/">Back to all</StyledLink>
-      <StyledHeader>Portfolio</StyledHeader>
-    </StyledView>
-  );
-};
-
-const StyledView = styled.div`
+export const StyledView = styled.div`
   max-height: 100vh;
   overflow: hidden;
 `;
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   position: absolute;
   text-decoration: none;
   top: 20px;
@@ -28,11 +18,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledHeader = styled.h1`
+export const StyledHeader = styled.h1`
   font-size: 40px;
   color: white;
   font-family: "Roboto", sans-serif;
   text-align: center;
   margin-top: 60px;
 `;
-export default Portfolio;

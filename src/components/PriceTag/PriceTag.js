@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled from "styled-components";
+
 import AppContext from "../../context/AppContext";
+import { StyledPriceTagContainer } from "./StyledPriceTag";
 
 const PriceTag = () => {
   const { myCurrency, currencyList } = useContext(AppContext);
@@ -22,22 +23,10 @@ const PriceTag = () => {
   }, [myCurrency, currencyList]);
 
   return (
-    <StylePriceTagContainer>
+    <StyledPriceTagContainer>
       <p>{value.toFixed(2)} $</p>
-    </StylePriceTagContainer>
+    </StyledPriceTagContainer>
   );
 };
 
-const StylePriceTagContainer = styled.div`
-  background-color: #7811f7;
-  width: auto;
-  position: absolute;
-  top: 15px;
-  right: 140px;
-  padding: 10px;
-  border-radius: 20px;
-  font-family: "Roboto", sans-serif;
-  color: white;
-  font-size: 16px;
-`;
 export default PriceTag;
