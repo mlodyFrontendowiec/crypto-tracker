@@ -1,13 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { StyledLink, StyledView, StyledHeader } from "./StyledPortfolio";
+import React, { useContext } from "react";
+import AppContext from "../../context/AppContext";
+
+import {
+  StyledLink,
+  StyledView,
+  StyledHeader,
+  StyledParagraph,
+} from "./StyledPortfolio";
 
 const Portfolio = () => {
+  const { totalValue } = useContext(AppContext);
+
   return (
     <StyledView>
       <StyledLink to="/">Back to all</StyledLink>
       <StyledHeader>Portfolio</StyledHeader>
+      <StyledParagraph>Total Value: {totalValue} $</StyledParagraph>
     </StyledView>
   );
 };

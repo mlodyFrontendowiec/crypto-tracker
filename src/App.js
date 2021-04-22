@@ -17,6 +17,7 @@ import { AppContainer, StyledLink } from "./components/StyledApp/StyledApp";
 function App() {
   const [currencyList, setCurrencyList] = useState([]);
   const [myCurrency, setMyCurrency] = useState([]);
+  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,12 +30,30 @@ function App() {
     return () => clearInterval(interval);
   }, [currencyList]);
 
+  useEffect(() => {
+    let totalValue = 0;
+    if (myCurrency.length !== 0) {
+      myCurrency.forEach((element) => {
+        const actualPriceItem = currencyList.find(
+          (item) => item.name === element.name
+        );
+        console.log(element.quantity);
+        totalValue += element.quantity * actualPriceItem.current_price;
+      });
+      console.log(totalValue);
+      setTotalValue(totalValue);
+    }
+    console.log(totalValue);
+  }, [myCurrency, currencyList]);
+
   const addToPortfolio = (obj) => {
     setMyCurrency([...myCurrency, obj]);
   };
 
   return (
-    <AppContext.Provider value={{ myCurrency, currencyList, addToPortfolio }}>
+    <AppContext.Provider
+      value={{ myCurrency, currencyList, addToPortfolio, totalValue }}
+    >
       <AppContainer>
         <Router>
           <Switch>
