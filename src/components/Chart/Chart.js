@@ -47,9 +47,11 @@ const Chart = () => {
       setPortfolioCurrency(actualList);
     }
   };
+
   useEffect(() => {
     reduceArray();
-  }, [myCurrency]);
+  });
+
   const data01 = [...portfolioCurrency];
   return (
     <StyledChartContainer>

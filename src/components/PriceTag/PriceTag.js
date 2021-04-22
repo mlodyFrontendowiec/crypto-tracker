@@ -5,9 +5,9 @@ import AppContext from "../../context/AppContext";
 const PriceTag = () => {
   const { myCurrency, currencyList } = useContext(AppContext);
   const [value, setValue] = useState(0);
-  let totalValue = 0;
 
   useEffect(() => {
+    let totalValue = 0;
     if (myCurrency.length !== 0) {
       myCurrency.forEach((element) => {
         const actualPriceItem = currencyList.find(
@@ -19,7 +19,7 @@ const PriceTag = () => {
       console.log(totalValue);
       setValue(totalValue);
     }
-  }, [currencyList]);
+  }, [myCurrency, currencyList]);
 
   return (
     <StylePriceTagContainer>

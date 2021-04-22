@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import request from "../helpers/request";
 
 const DetailsView = ({ currencyList }) => {
   let { name } = useParams();
