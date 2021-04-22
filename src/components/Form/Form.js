@@ -15,7 +15,7 @@ const Form = ({ currency, currentPrice }) => {
     addToPortfolio({
       name: currency,
       quantity: quantity,
-      currentPrice: quantity * currentPrice,
+      value: parseFloat((quantity * currentPrice).toFixed(2)),
     });
     setQuantity(0);
   };

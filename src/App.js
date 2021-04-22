@@ -11,6 +11,7 @@ import "./reset.css";
 import DetailsView from "./views/DetailsView";
 import Portfolio from "./components/Portfolio/Portfolio";
 import PriceTag from "./components/PriceTag/PriceTag";
+import Chart from "./components/Chart/Chart";
 
 function App() {
   const [currencyList, setCurrencyList] = useState([]);
@@ -23,7 +24,6 @@ function App() {
           setCurrencyList([...res.data]);
         }
       });
-      console.log("ok");
     }, 1000);
     return () => clearInterval(interval);
   }, [currencyList]);
@@ -51,6 +51,7 @@ function App() {
             </Route>
             <Route to="/portfolio">
               <Portfolio />
+              <Chart />
             </Route>
           </Switch>
         </Router>
