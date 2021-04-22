@@ -26,25 +26,26 @@ const Chart = () => {
     "#4F21B2 ",
     "#39B29E ",
   ];
-  const portfolioCurrencyList = [];
   const reduceArray = () => {
-    myCurrency.forEach((element) => {
-      console.log(portfolioCurrencyList.length);
-      if (portfolioCurrencyList.length === 0) {
-        portfolioCurrencyList.push(element);
-      } else {
-        portfolioCurrencyList.every((item) => {
-          if (element.name === item.name) {
-            item.value += element.value.toFixed(2);
-            return false;
-          } else if (element.name !== item.name) {
-            portfolioCurrencyList.push(element);
-            return false;
-          }
-        });
+    const actualList = [];
+    const holder = {};
+    if (myCurrency.length === 0) {
+      actualList.push(...myCurrency);
+    } else {
+      myCurrency.forEach(function (d) {
+        if (holder.hasOwnProperty(d.name)) {
+          holder[d.name] = holder[d.name] + parseFloat(d.value.toFixed(2));
+        } else {
+          holder[d.name] = parseFloat(d.value.toFixed(2));
+        }
+      });
+
+      for (var prop in holder) {
+        actualList.push({ name: prop, value: holder[prop] });
       }
-      setPortfolioCurrency(portfolioCurrencyList);
-    });
+      console.log(actualList);
+      setPortfolioCurrency(actualList);
+    }
   };
   useEffect(() => {
     reduceArray();
