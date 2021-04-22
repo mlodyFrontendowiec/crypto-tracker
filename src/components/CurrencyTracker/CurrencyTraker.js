@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Loader from "react-loader-spinner";
 import ListItem from "../ListItem/ListItem";
 import {
   StyledHeader,
@@ -31,7 +31,13 @@ const CurrencyTracker = ({ currencyList }) => {
       />
       <StyledList>
         {currencyListComponent.length === 0 ? (
-          <StyledNotFound>Not found</StyledNotFound>
+          <Loader
+            type="Puff"
+            color="#7811f7"
+            height={100}
+            width={100}
+            timeout={3000}
+          />
         ) : (
           currencyListComponent
         )}
