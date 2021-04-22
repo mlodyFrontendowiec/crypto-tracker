@@ -1,6 +1,6 @@
 # Crypto Tracker
 
-I used React, Styled Components and Axios libraries to write this application. This application fetch data from the Coingecko API. It presents them in the form of a table. 
+I used React, Styled Components and Axios libraries to write this application. This application fetch data from the Coingecko API. It presents them in the form of a table.
 
 <img src="./screen1.png"/>
 
@@ -14,7 +14,7 @@ User can search cryptocurrency names via input.
 
 You can see the details of each cryptocurrency. You can see a lot of information on each cryptocurrency.
 
-<img src="./screen3.png"/>
+<img src="./screen6.png"/>
 
 ## Adding to portfolio
 
