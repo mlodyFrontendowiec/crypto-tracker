@@ -28,6 +28,19 @@ function App() {
       });
     }, 1000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const newArr = [];
+    myCurrency.forEach((item) => {
+      const actualCurrency = currencyList.find(
+        (currency) => currency.name === item.name
+      );
+      item.value = item.quantity * actualCurrency.current_price;
+
+      newArr.push(item);
+    });
+    setMyCurrency([...newArr]);
   }, [currencyList]);
 
   useEffect(() => {
@@ -37,14 +50,12 @@ function App() {
         const actualPriceItem = currencyList.find(
           (item) => item.name === element.name
         );
-        console.log(element.quantity);
         totalValue += element.quantity * actualPriceItem.current_price;
       });
-      console.log(totalValue);
+
       setTotalValue(totalValue);
     }
-    console.log(totalValue);
-  }, [myCurrency, currencyList]);
+  }, [currencyList]);
 
   const addToPortfolio = (obj) => {
     setMyCurrency([...myCurrency, obj]);

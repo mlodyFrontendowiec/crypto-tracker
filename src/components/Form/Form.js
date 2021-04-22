@@ -23,7 +23,7 @@ const Form = ({ currency, currentPrice }) => {
     addToPortfolio({
       name: currency,
       quantity: quantity,
-      value: parseFloat((quantity * currentPrice).toFixed(2)),
+      // value: parseFloat((quantity * currentPrice).toFixed(2)),
     });
     setQuantity(0);
   };

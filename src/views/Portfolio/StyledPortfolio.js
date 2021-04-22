@@ -25,3 +25,11 @@ export const StyledHeader = styled.h1`
   text-align: center;
   margin-top: 60px;
 `;
+
+export const StyledParagraph = styled.p`
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 60px;
+  color: white;
+  text-align: center;
+`;

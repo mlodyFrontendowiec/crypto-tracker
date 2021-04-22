@@ -15,7 +15,7 @@ const Portfolio = () => {
     <StyledView>
       <StyledLink to="/">Back to all</StyledLink>
       <StyledHeader>Portfolio</StyledHeader>
-      <StyledParagraph>Total Value: {totalValue} $</StyledParagraph>
+      <StyledParagraph>Total Value: {totalValue.toFixed(2)} $</StyledParagraph>
     </StyledView>
   );
 };

@@ -7,8 +7,9 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-import styled from "styled-components";
 import AppContext from "../../context/AppContext";
+import { StyledChartContainer } from "./StyledChartContainer";
+import "./chart.css";
 
 const Chart = () => {
   const { myCurrency } = useContext(AppContext);
@@ -26,7 +27,8 @@ const Chart = () => {
     "#4F21B2 ",
     "#39B29E ",
   ];
-  const reduceArray = () => {
+
+  useEffect(() => {
     const actualList = [];
     const holder = {};
     if (myCurrency.length === 0) {
@@ -46,17 +48,13 @@ const Chart = () => {
       console.log(actualList);
       setPortfolioCurrency(actualList);
     }
-  };
-
-  useEffect(() => {
-    reduceArray();
-  });
+  }, [myCurrency]);
 
   const data01 = [...portfolioCurrency];
   return (
     <StyledChartContainer>
       <ResponsiveContainer width="100%" height="70%">
-        <PieChart width="90%" height="80%" style={{ overflow: "hidden" }}>
+        <PieChart width="90%" height="80%">
           <Pie
             dataKey="value"
             isAnimationActive={false}
@@ -81,10 +79,5 @@ const Chart = () => {
     </StyledChartContainer>
   );
 };
-
-const StyledChartContainer = styled.div`
-  width: 100%;
-  height: 500px;
-`;
 
 export default Chart;
