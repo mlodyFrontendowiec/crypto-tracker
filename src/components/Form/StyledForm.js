@@ -26,6 +26,15 @@ export const StyledForm = styled.form`
 
 export const StyledLabel = styled.label`
   font-size: 18px;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
 
 export const StyledParagraph = styled.p`
@@ -33,7 +42,16 @@ export const StyledParagraph = styled.p`
   font-family: "Roboto", sans-serif;
   color: white;
   margin-top: 40px;
-  margin-right: 40px;
+  margin-right: 50px;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
 
 export const StyledFormButton = styled.button`
@@ -46,10 +64,28 @@ export const StyledFormButton = styled.button`
   font-weight: bold;
   color: #7811f7;
   cursor: pointer;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
 
 export const StyledInput = styled.input`
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   margin-left: 2px;
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
