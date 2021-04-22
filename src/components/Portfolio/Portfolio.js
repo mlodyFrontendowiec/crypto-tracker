@@ -34,6 +34,6 @@ const StyledHeader = styled.h1`
   color: white;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 60px;
 `;
 export default Portfolio;
